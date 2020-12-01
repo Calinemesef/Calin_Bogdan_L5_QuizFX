@@ -1,0 +1,13 @@
+intrebare 1
+nr rsp corecte
+rsp corect
+rsp corect
+rsp gresit
+rsp gresit
+////delimitator
+intrebare 2
+nr rsp corecte
+rsp corect
+rsp gresit
+rsp gresit
+rsp gresit
