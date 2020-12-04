@@ -8,8 +8,9 @@
    <children>
       <GridPane layoutX="12.0" layoutY="12.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="513.0000305175781" minWidth="10.0" prefWidth="457.6" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="283.0" minWidth="10.0" prefWidth="119.20000000000005" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="513.0000305175781" minWidth="10.0" prefWidth="132.60000000000002" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="513.0000305175781" minWidth="10.0" prefWidth="387.8" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="283.0" minWidth="10.0" prefWidth="93.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -18,21 +19,21 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="116.0" prefWidth="576.0" text="Die theoretische Prüfung für den Führerschein">
+            <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="116.0" prefWidth="576.0" text="Die theoretische Prüfung für den Führerschein" GridPane.columnIndex="1">
                <font>
-                  <Font size="22.0" />
+                  <Font size="17.0" />
                </font></Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="101.0" prefWidth="576.0" text="Sie sind bereit, die Prüfung zu beginnen?" textAlignment="CENTER" GridPane.rowIndex="1">
+            <Label fx:id="result" alignment="CENTER" contentDisplay="CENTER" prefHeight="101.0" prefWidth="576.0" text="Sie sind bereit, die Prüfung zu beginnen?" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <buttons>
-                  <Button fx:id="closeApp" mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                  <Button fx:id="closeApp" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#closeApp" text="Close" />
                </buttons>
             </ButtonBar>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <buttons>
                   <Button fx:id="startApp" mnemonicParsing="false" onAction="#StartApp" text="Start" />
                </buttons>
