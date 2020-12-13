@@ -71,7 +71,7 @@ public class Quiz {
     public void setScore(int val){
         this.score = val;
     }
-    
+
     @Override
     public String toString() {
         return "Quiz{" +

@@ -7,26 +7,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/** Clasa pentru Citirea din fisierul txt
+ * Fisierul meu are forma:
+ *
+ * Intrebarea 1
+ * Numar raspunsuri corecte ( de ex 2)
+ * Primul rsp corect
+ * Al doilea rsp corect
+ * Rsp gresit
+ *
+ * Intrebarea 2
+ * Numar raspunsuri corecte ( de ex 1)
+ * Primul rsp corect
+ * Rsp gresit
+ * Rsp gresit
+ */
 public class FileRepo {
 
-    /** Citirea din fisierul txt
-     * Fisierul meu are forma:
-     *
-     * Intrebarea 1
-     * Numar raspunsuri corecte ( de ex 2)
-     * Primul rsp corect
-     * Al doilea rsp corect
-     * Rsp gresit
-     *
-     * Intrebarea 2
-     * Numar raspunsuri corecte ( de ex 1)
-     * Primul rsp corect
-     * Rsp gresit
-     * Rsp gresit
-     *
+
+    /**
      * @param f - fisierul
      * @param quiz - Quizul(lista de grile) la care adaug grilele pe baza tuplurilor din fisier
-     *               Un "tuplu" are - (intrebare,nr. rsp corecte, rsp. corecte, rsp gresite)
+     *                 Un "tuplu" are - (intrebare,nr. rsp corecte, rsp. corecte, rsp gresite)
      * In "string" citesc linie cu linie si adaug in "lista"
      * Cand "lista" are tuplul complet, o adaug sub forma de Grila in Quiz/lista de grile
      * @throws FileNotFoundException
