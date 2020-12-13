@@ -3,6 +3,9 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clasa care reprezinta o grila din Quiz
+ */
 public class Grila {
     private String question;    // intrebarea
     private Integer nr_correct; // numarul de raspunsuri corecte
@@ -30,18 +33,31 @@ public class Grila {
         }
     }
 
+    /**
+     * Getter pt intrebare
+     */
     public String getQuestion() {
         return question;
     }
 
+    /**
+     * Getter pt numarul de raspunsuri corecte
+     */
     public Integer getNr_correct() {
         return nr_correct;
     }
 
+    /**
+     * Getter pt raspunsul corect
+     * @return - returneaza lista de raspunsuri corecte
+     */
     public ArrayList<String> getCorrect() {
         return correct;
     }
 
+    /**
+     * Getter pt lista cu toate variantele de raspuns
+     */
     public ArrayList<String> getAllAnswers() {
         return allAnswers;
     }
