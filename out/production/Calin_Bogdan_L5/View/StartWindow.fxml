@@ -30,15 +30,15 @@
             </Label>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <buttons>
-                  <Button fx:id="closeApp" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                  <Button fx:id="CloseApp" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#CloseApp" text="Close" />
                </buttons>
             </ButtonBar>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <buttons>
-                  <Button fx:id="startApp" mnemonicParsing="false" onAction="#StartApp" text="Start" />
+                  <Button fx:id="StartApp" mnemonicParsing="false" onAction="#StartApp" text="Start" />
                </buttons>
             </ButtonBar>
-            <Button fx:id="Reset" mnemonicParsing="false" text="Button" visible="false" GridPane.rowIndex="3" />
+            <Button fx:id="Restart" mnemonicParsing="false" onAction="#Restart" text="Button" visible="false" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

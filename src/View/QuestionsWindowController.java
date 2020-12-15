@@ -3,6 +3,10 @@ import edu.ubb.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Controller pentru QuestionsWindow
@@ -23,6 +27,64 @@ public class QuestionsWindowController {
     public QuestionsWindowController() {
         question = new Label("");
         progress = new Label("0/26");
+    }
+
+    /**
+     * Metoda pt initializarea controllerului dupa fisierul fxml
+     */
+    @FXML
+    private void initialize() {
+        checkBoxList = new CheckBox[3];
+        checkBoxList[0] = checkBox1;
+        checkBoxList[1] = checkBox2;
+        checkBoxList[2] = checkBox3;
+    }
+
+    /**
+     * Metoda pt setarea scenei principale
+     */
+    public void setMainApp(Controller mainApp) {
+        this.mainApp = mainApp;
+    }
+
+//    /**
+//     * Metoda pt checkbox bifat
+//     * @param pressed - checkboxul respectiv
+//     */
+//    private void checkboxPressed(CheckBox pressed){
+//        if (pressed.isVisible()){
+//            pressed.setSelected(true);
+//        }
+//    }
+
+    @FXML private void Next() throws IOException { getNextQuiz();			}
+
+    /**
+     * Metoda pt a trimite raspunsurile alese controllerului, sub forma de lista de stringuri
+     */
+    private void getNextQuiz() throws IOException {
+        ArrayList<String> picked = new ArrayList<String>();
+        if(checkBox1.isSelected())
+            picked.add(checkBox1.getText());
+        if(checkBox2.isSelected())
+            picked.add(checkBox2.getText());
+        if(checkBox3.isSelected())
+            picked.add(checkBox3.getText());
+        mainApp.stepQuiz(picked);
+    }
+
+    /**
+     * Metoda pt afisarea unei grile
+
+     */
+    public void showQuiz(String question, ArrayList<String> allAnswers){
+        this.question.setText(question);
+        this.question.setVisible(true);
+        for (int i = 0; i < 3; i++){
+            checkBoxList[i].setText(allAnswers.get(i));
+            checkBoxList[i].setSelected(false);
+            checkBoxList[i].setVisible(true);
+        }
     }
 
 }
