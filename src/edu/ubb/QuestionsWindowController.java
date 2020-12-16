@@ -26,8 +26,8 @@ public class QuestionsWindowController {
 
 
     public QuestionsWindowController() {
-        question = new Label("");
-        progress = new Label("0/26");
+        question = new Label();
+        progress = new Label();
     }
 
     /**
