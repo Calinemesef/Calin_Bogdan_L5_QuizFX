@@ -1,4 +1,5 @@
 package ubb;
+import javafx.event.ActionEvent;
 import ubb.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -35,6 +36,10 @@ public class QuestionsWindowController {
     @FXML
     private void initialize() {
         checkBoxList = new CheckBox[3];
+        checkBox1.setSelected(false);
+        checkBox2.setSelected(false);
+        checkBox3.setSelected(false);
+
         checkBoxList[0] = checkBox1;
         checkBoxList[1] = checkBox2;
         checkBoxList[2] = checkBox3;
@@ -87,4 +92,17 @@ public class QuestionsWindowController {
         }
     }
 
+
+    public void checkBoxSelected(ActionEvent event) {
+        if (event.getSource() instanceof CheckBox) {
+            CheckBox chk = (CheckBox) event.getSource();
+            if ("checkBox1".equals(chk.getText())) {
+                checkBox1.setSelected(!checkBox1.isSelected());
+            } else if ("checkBox2".equals(chk.getText())) {
+                checkBox2.setSelected(!checkBox2.isSelected());
+            } else if ("checkBox3".equals(chk.getText())) {
+                checkBox3.setSelected(!checkBox3.isSelected());
+            }
+        }
+    }
 }

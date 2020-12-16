@@ -33,7 +33,7 @@ public class FileRepo {
      * Cand "lista" are tuplul complet, o adaug sub forma de Grila in Quiz/lista de grile
      * @throws FileNotFoundException
      */
-    private static void readFile(File f, Quiz quiz) throws FileNotFoundException {
+    public static void readFile(File f, Quiz quiz) throws FileNotFoundException {
 
         FileInputStream file = new FileInputStream(f);
         Scanner read = new Scanner(file);

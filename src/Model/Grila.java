@@ -22,6 +22,8 @@ public class Grila {
      * @param list - lista de stringuri care contine intrebarea,nr. de rsp corecte, rsp. corecte si toate rsp.
      */
     public Grila(List<String> list){
+        correct = new ArrayList<String>();
+        allAnswers= new ArrayList<String>();
         question = list.get(0);
         nr_correct = Integer.valueOf(list.get(1));
         for(int i = 0; i<nr_correct; i++){

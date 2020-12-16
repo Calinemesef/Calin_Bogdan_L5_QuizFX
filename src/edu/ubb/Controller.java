@@ -1,5 +1,6 @@
 package ubb;
 
+import Model.FileRepo;
 import Model.Quiz;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -77,6 +79,7 @@ public class Controller extends Application {
      */
     public void loadQuiz() throws Exception{
         this.quiz = new Quiz();
+        FileRepo.readFile(new File("src/Model/intrebari.txt"),quiz);
         showQuizView();
     }
 
@@ -87,7 +90,7 @@ public class Controller extends Application {
         currentIndex = 0;
         if (quiz.getGameSize() > 0) {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(Controller.class.getResource("ubb/QuestionsWindow.fxml"));
+                loader.setLocation(Controller.class.getResource("QuestionsWindow.fxml"));
                 AnchorPane quizView = (AnchorPane) loader.load();
                 rootLayout.setCenter(quizView);
                 QuestionsWindowController viewController = loader.getController();
