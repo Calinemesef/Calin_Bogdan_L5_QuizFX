@@ -1,4 +1,4 @@
-package ubb;
+package edu.ubb;
 
 import Model.Quiz;
 import View.QuestionsWindowController;
