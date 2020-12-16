@@ -1,7 +1,7 @@
 package View;
-import edu.ubb.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import ubb.Controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
