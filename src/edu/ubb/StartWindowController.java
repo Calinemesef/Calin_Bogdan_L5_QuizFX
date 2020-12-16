@@ -1,8 +1,8 @@
-package View;
+package ubb;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import edu.ubb.Controller;
+import ubb.Controller;
 
 /**
  * Controller pentru scena de start si de sfarsit

@@ -1,5 +1,5 @@
-package View;
-import edu.ubb.Controller;
+package ubb;
+import ubb.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 

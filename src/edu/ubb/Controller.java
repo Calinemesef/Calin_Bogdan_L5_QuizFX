@@ -1,11 +1,8 @@
-package edu.ubb;
+package ubb;
 
 import Model.Quiz;
-import View.QuestionsWindowController;
-import View.StartWindowController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
@@ -25,12 +22,14 @@ public class Controller extends Application {
     private int currentIndex;
     private int score=0;
     private int gresite=0;
+    private MenuController menu;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Quiz");
-        //initRootLayout();
+        initRootLayout();
         showStartWindow();
     }
 
@@ -39,12 +38,25 @@ public class Controller extends Application {
         launch(args);
     }
 
+    private void initRootLayout() throws IOException {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Controller.class.getResource("Menu.fxml"));
+            rootLayout = (BorderPane) loader.load();
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            MenuController viewController = loader.getController();
+            viewController.setMainApp(this);
+            menu = viewController;
+            primaryStage.show();
+
+    }
+
     /**
      * Metoda pt initializarea paginii de start
      */
     private void showStartWindow() throws IOException {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Controller.class.getResource("src/View/StartWindow.fxml"));
+            loader.setLocation(Controller.class.getResource("StartWindow.fxml"));
             AnchorPane loadView = (AnchorPane) loader.load();
             rootLayout.setCenter(loadView);
             StartWindowController startController = loader.getController();
@@ -75,7 +87,7 @@ public class Controller extends Application {
         currentIndex = 0;
         if (quiz.getGameSize() > 0) {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(Controller.class.getResource("View/QuestionsWindow.fxml"));
+                loader.setLocation(Controller.class.getResource("ubb/QuestionsWindow.fxml"));
                 AnchorPane quizView = (AnchorPane) loader.load();
                 rootLayout.setCenter(quizView);
                 QuestionsWindowController viewController = loader.getController();

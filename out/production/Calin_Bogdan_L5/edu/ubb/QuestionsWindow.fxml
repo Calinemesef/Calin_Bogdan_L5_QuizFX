@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubb.QuestionsWindowController">
+   <children>
+      <GridPane layoutX="12.0" layoutY="12.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.2" minWidth="10.0" prefWidth="467.2" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="283.0" minWidth="10.0" prefWidth="109.59999999999997" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="249.39999237060547" minHeight="9.399998092651373" prefHeight="43.2" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="331.19999237060546" minHeight="10.0" prefHeight="65.6" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="331.19999237060546" minHeight="10.0" prefHeight="219.8" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="120.40000000000003" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ButtonBar prefHeight="85.0" prefWidth="576.0" GridPane.rowIndex="3">
+               <buttons>
+                  <Button fx:id="Next" mnemonicParsing="false" onAction="#Next" text="Next" />
+               </buttons>
+            </ButtonBar>
+            <Label fx:id="progress" prefHeight="18.0" prefWidth="62.0" text="Label" GridPane.halignment="LEFT" />
+            <Label fx:id="correctAnswers" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <Label fx:id="question" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <VBox fx:id="checkGroup" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+               <children>
+                  <CheckBox fx:id="checkBox1" mnemonicParsing="false" onAction="#checkBoxSelected" prefHeight="95.0" prefWidth="74.0" text="CheckBox" />
+                  <CheckBox fx:id="checkBox2" mnemonicParsing="false" onAction="#checkBoxSelected" prefHeight="95.0" prefWidth="74.0" text="CheckBox" />
+                  <CheckBox fx:id="checkBox3" mnemonicParsing="false" onAction="#checkBoxSelected" prefHeight="95.0" prefWidth="74.0" text="CheckBox" />
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
