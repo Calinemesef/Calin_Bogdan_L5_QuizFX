@@ -38,7 +38,7 @@
                   <Button fx:id="StartApp" mnemonicParsing="false" onAction="#StartApp" text="Start" />
                </buttons>
             </ButtonBar>
-            <Button fx:id="Restart" mnemonicParsing="false" onAction="#Restart" text="Button" visible="false" GridPane.rowIndex="3" />
+            <Button fx:id="Restart" mnemonicParsing="false" onAction="#Restart" text="Restart" visible="false" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

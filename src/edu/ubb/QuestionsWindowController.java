@@ -1,12 +1,12 @@
 package ubb;
 import javafx.event.ActionEvent;
-import ubb.Controller;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -22,6 +22,7 @@ public class QuestionsWindowController {
     @FXML private CheckBox checkBox2;
     @FXML private CheckBox checkBox3;
     @FXML private Button Next;      // butonul next
+    @FXML private Label wrongAnswers;
     private CheckBox[] checkBoxList;		// lista pentru iterat prin checkboxuri
 
 
@@ -104,5 +105,13 @@ public class QuestionsWindowController {
                 checkBox3.setSelected(!checkBox3.isSelected());
             }
         }
+    }
+
+    public void setLabels(int index,int gresite){
+        String s=String.valueOf(gresite);
+        progress.setText(index+"/26");
+        wrongAnswers.setText(s);
+
+
     }
 }

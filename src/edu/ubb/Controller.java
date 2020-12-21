@@ -30,7 +30,7 @@ public class Controller extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Quiz");
+        this.primaryStage.setTitle("Prufung");
         initRootLayout();
         showStartWindow();
     }
@@ -80,6 +80,8 @@ public class Controller extends Application {
     public void loadQuiz() throws Exception{
         this.quiz = new Quiz();
         FileRepo.readFile(new File("src/Model/intrebari.txt"),quiz);
+        System.out.println(quiz.getGameSize());
+        quiz.createExam();
         showQuizView();
     }
 
@@ -97,6 +99,7 @@ public class Controller extends Application {
                 viewController.setMainApp(this);
                 view = viewController;
                 showQuiz(currentIndex);
+                view.setLabels(1,gresite);
         }
     }
 
@@ -105,8 +108,12 @@ public class Controller extends Application {
      * @param index - indexul grilei
      */
     private void showQuiz(int index) {
-        if (index < quiz.getGameSize())
-            view.showQuiz(quiz.getQuestion(index), quiz.getAllAnswers(index));
+        if (index < quiz.getGameSize()){
+            view.setLabels(currentIndex+1,gresite);
+            System.out.println("Raspunse corect: " + score);
+            System.out.println("Raspunse gresit: " + gresite);
+            System.out.println("ce marime are quiz-ul: " + quiz.getGameSize());
+            view.showQuiz(quiz.getQuestion(index), quiz.getAllAnswers(index));}
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
@@ -119,16 +126,21 @@ public class Controller extends Application {
      * Metoda pt a trece la urmatoarea grila si pt a stabili punctajul
      */
     public void stepQuiz(ArrayList<String> pick) throws IOException {
-        if (pick.equals(quiz.getCorrect(currentIndex)))
+        view.setLabels(currentIndex,gresite);
+        if (pick.equals(quiz.getCorrect(currentIndex))){
             score +=1;
-        else
+            }
+        else{
             gresite += 1;
+        }
         currentIndex = currentIndex + 1;
+        System.out.println("indexul curent: " + currentIndex);
         if(gresite >4)
             showResult();
         else
             showQuiz(currentIndex);
     }
+
 
     /**
      * Metoda pt afisarea rezultatului final

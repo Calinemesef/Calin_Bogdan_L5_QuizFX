@@ -1,8 +1,8 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Quizul efectiv care contine mai multe grile
@@ -15,7 +15,9 @@ public class Quiz {
      * Constructor pt initializarea listei de grile
      */
     public Quiz(){
+
         quiz = new ArrayList<Grila>();
+
     }
 
     /**
@@ -24,6 +26,24 @@ public class Quiz {
      */
     public void addGrila(List<String> list){
         quiz.add(new Grila(list));
+    }
+
+    /**
+     * se creaza un quiz random de 26 de intrebari
+     */
+    public void  createExam(){
+        List<Grila> grilaCopy = new ArrayList<Grila>(quiz);
+        Random rand = new Random();
+
+        List<Grila> listaGoala = new ArrayList<Grila>();
+        for(int i=0; i<26; i++){
+
+            int randIndex = rand.nextInt(grilaCopy.size());
+            listaGoala.add(grilaCopy.get(randIndex));
+            grilaCopy.remove(randIndex);
+        }
+        quiz = listaGoala;
+        System.out.println(listaGoala);
     }
 
     /**
@@ -48,6 +68,7 @@ public class Quiz {
      */
     public ArrayList<String> getAllAnswers(int index){
         return quiz.get(index).getAllAnswers();
+
     }
 
     /**
@@ -55,6 +76,7 @@ public class Quiz {
      */
     public int getGameSize(){
         return quiz.size();
+
     }
 
     /**
