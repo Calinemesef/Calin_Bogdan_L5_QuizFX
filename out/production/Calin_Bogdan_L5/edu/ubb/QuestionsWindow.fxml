@@ -3,13 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubb.QuestionsWindowController">
+<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubb.QuestionsWindowController">
    <children>
-      <GridPane layoutX="12.0" layoutY="12.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+      <GridPane layoutX="12.0" layoutY="12.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.2" minWidth="10.0" prefWidth="51.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="522.0" minWidth="10.0" prefWidth="515.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="283.0" minWidth="10.0" prefWidth="109.59999999999997" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.2" minWidth="10.0" prefWidth="20.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="665.0" minWidth="10.0" prefWidth="655.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="283.0" minWidth="10.0" prefWidth="78.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="249.39999237060547" minHeight="9.399998092651373" prefHeight="43.2" vgrow="SOMETIMES" />
@@ -25,12 +25,12 @@
             </ButtonBar>
             <Label fx:id="progress" prefHeight="24.0" prefWidth="76.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" />
             <Label fx:id="wrongAnswers" text="0" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
-            <Label fx:id="question" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="question" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
             <VBox fx:id="checkGroup" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <CheckBox fx:id="checkBox1" mnemonicParsing="false" onAction="#checkBoxSelected" prefHeight="73.0" prefWidth="485.0" text="CheckBox" />
-                  <CheckBox fx:id="checkBox2" mnemonicParsing="false" onAction="#checkBoxSelected" prefHeight="81.0" prefWidth="485.0" text="CheckBox" />
-                  <CheckBox fx:id="checkBox3" mnemonicParsing="false" onAction="#checkBoxSelected" prefHeight="86.0" prefWidth="485.0" text="CheckBox" />
+                  <CheckBox fx:id="checkBox1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#checkBoxSelected" prefHeight="73.0" prefWidth="485.0" text="CheckBox" />
+                  <CheckBox fx:id="checkBox2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#checkBoxSelected" prefHeight="81.0" prefWidth="485.0" text="CheckBox" />
+                  <CheckBox fx:id="checkBox3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#checkBoxSelected" prefHeight="86.0" prefWidth="485.0" text="CheckBox" />
                </children>
             </VBox>
             <Label fx:id="LabelSusDreapta" text="Falsch:" GridPane.columnIndex="2" />

@@ -89,6 +89,7 @@ public class Controller extends Application {
      * Metoda pt initializarea controllerului dupa fisierul fxml
      */
     private void showQuizView() throws IOException {
+        gresite = 0;
         currentIndex = 0;
         if (quiz.getGameSize() > 0) {
                 FXMLLoader loader = new FXMLLoader();
@@ -107,18 +108,22 @@ public class Controller extends Application {
      * Metoda pt afisarea unei grile
      * @param index - indexul grilei
      */
-    private void showQuiz(int index) {
-        if (index < quiz.getGameSize()){
-            view.setLabels(currentIndex+1,gresite);
-            System.out.println("Raspunse corect: " + score);
-            System.out.println("Raspunse gresit: " + gresite);
-            System.out.println("ce marime are quiz-ul: " + quiz.getGameSize());
-            view.showQuiz(quiz.getQuestion(index), quiz.getAllAnswers(index));}
+    private void showQuiz(int index) throws IOException {
+        if( index == quiz.getGameSize())
+            showResult();
         else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText("Indexul depaseste numarul de grile");
-            alert.showAndWait();
+            if (index <= quiz.getGameSize()) {
+                view.setLabels(currentIndex + 1, gresite);
+                System.out.println("Raspunse corect: " + score);
+                System.out.println("Raspunse gresit: " + gresite);
+                System.out.println("ce marime are quiz-ul: " + quiz.getGameSize());
+                view.showQuiz(quiz.getQuestion(index), quiz.getAllAnswers(index));
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning");
+                alert.setHeaderText("Indexul depaseste numarul de grile");
+                alert.showAndWait();
+            }
         }
     }
 
