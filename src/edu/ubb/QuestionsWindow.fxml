@@ -21,10 +21,10 @@
             <ButtonBar prefHeight="85.0" prefWidth="576.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <buttons>
                   <Button fx:id="Next" mnemonicParsing="false" onAction="#Next" text="Next" />
+                  <Label text="Label" />
                </buttons>
             </ButtonBar>
             <Label fx:id="progress" prefHeight="24.0" prefWidth="76.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" />
-            <Label fx:id="wrongAnswers" text="0" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
             <Label fx:id="question" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
             <VBox fx:id="checkGroup" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
@@ -34,6 +34,7 @@
                </children>
             </VBox>
             <Label fx:id="LabelSusDreapta" text="Falsch:" GridPane.columnIndex="2" />
+            <Label text="Label" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>

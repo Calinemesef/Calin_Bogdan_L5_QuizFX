@@ -2,6 +2,8 @@ package ubb;
 
 import Model.FileRepo;
 import Model.Quiz;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,6 +28,7 @@ public class Controller extends Application {
     private int score=0;
     private int gresite=0;
     private MenuController menu;
+    private Integer seconds;
 
 
     @Override
@@ -33,6 +37,34 @@ public class Controller extends Application {
         this.primaryStage.setTitle("Prufung");
         initRootLayout();
         showStartWindow();
+    }
+
+    /**
+     * function to show time for each quiz
+     *
+     * @param primaryStage -> principal Stage where the actions, buttons, frames or labels shall be shown
+     */
+    private void doTime(Stage primaryStage) {
+        Timeline time = new Timeline();
+        KeyFrame frame = new KeyFrame(Duration.seconds(2), event -> {
+            seconds--;
+            int minutes = seconds / 60;
+            int leftSeconds = seconds % 60;
+            //timeLabel.setText("Time: " + minutes + ":" + leftSeconds);
+            if (seconds <= 0) {
+                //primaryStage.setScene();
+                //primaryStage.show();
+                try {
+                    showResult();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        time.setCycleCount(Timeline.INDEFINITE);
+        time.getKeyFrames().add(frame);
+        time.stop();
+        time.play();
     }
 
 
@@ -57,6 +89,7 @@ public class Controller extends Application {
      * Metoda pt initializarea paginii de start
      */
     private void showStartWindow() throws IOException {
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Controller.class.getResource("StartWindow.fxml"));
             AnchorPane loadView = (AnchorPane) loader.load();
@@ -70,6 +103,7 @@ public class Controller extends Application {
      * Metoda pt optiunea de restart
      */
     public void restartQuiz() throws IOException {
+        seconds=20;
         //quiz.startGame();
         showQuizView();
     }
@@ -78,6 +112,7 @@ public class Controller extends Application {
      * Metoda pt inceperea quizului
      */
     public void loadQuiz() throws Exception{
+        seconds=20;
         this.quiz = new Quiz();
         FileRepo.readFile(new File("src/Model/intrebari.txt"),quiz);
         System.out.println(quiz.getGameSize());
@@ -89,6 +124,9 @@ public class Controller extends Application {
      * Metoda pt initializarea controllerului dupa fisierul fxml
      */
     private void showQuizView() throws IOException {
+        new Thread(() -> doTime(primaryStage)).start();
+        doTime(primaryStage);
+
         gresite = 0;
         currentIndex = 0;
         if (quiz.getGameSize() > 0) {
