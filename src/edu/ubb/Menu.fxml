@@ -13,12 +13,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem fx:id="mIRestart" disable="true" mnemonicParsing="false" onAction="#restartGame" text="Restart Quiz">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="N" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
-                     </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#loadNewGame" text="Open Quiz...">
+                  <MenuItem mnemonicParsing="false" onAction="#loadNewGame" text="Start">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                      </accelerator>

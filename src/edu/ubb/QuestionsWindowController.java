@@ -53,16 +53,9 @@ public class QuestionsWindowController {
         this.mainApp = mainApp;
     }
 
-//    /**
-//     * Metoda pt checkbox bifat
-//     * @param pressed - checkboxul respectiv
-//     */
-//    private void checkboxPressed(CheckBox pressed){
-//        if (pressed.isVisible()){
-//            pressed.setSelected(true);
-//        }
-//    }
-
+    /**
+     * Butonul de next, care permite trecerea la urmatoarea intrebare
+     */
     @FXML private void Next() throws IOException { getNextQuiz();			}
 
     /**
@@ -81,7 +74,6 @@ public class QuestionsWindowController {
 
     /**
      * Metoda pt afisarea unei grile
-
      */
     public void showQuiz(String question, ArrayList<String> allAnswers){
         this.question.setText(question);
@@ -93,7 +85,10 @@ public class QuestionsWindowController {
         }
     }
 
-
+    /**
+     * Metoda pentru selectarea checkbox-urilor
+     * @param event - selectarea
+     */
     public void checkBoxSelected(ActionEvent event) {
         if (event.getSource() instanceof CheckBox) {
             CheckBox chk = (CheckBox) event.getSource();
@@ -107,11 +102,14 @@ public class QuestionsWindowController {
         }
     }
 
+    /**
+     * Seteaza textul din label-uri
+     * @param index - indexul curent din examen
+     * @param gresite - numarul de raspunsuri gresite
+     */
     public void setLabels(int index,int gresite){
         String s=String.valueOf(gresite);
         progress.setText(index+"/26");
         wrongAnswers.setText(s);
-
-
     }
 }

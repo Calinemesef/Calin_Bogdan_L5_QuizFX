@@ -2,7 +2,6 @@ package ubb;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import ubb.Controller;
 
 /**
  * Controller pentru scena de start si de sfarsit
@@ -10,9 +9,8 @@ import ubb.Controller;
 public class StartWindowController {
 
     private Controller mainApp;		// aplicatia principala
-    @FXML private Label title;	// GFX-elements...
+    @FXML private Label title;
     @FXML private Label result;
-    @FXML private Button CloseApp;
     @FXML private Button Restart;
     @FXML private Button StartApp;
 

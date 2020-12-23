@@ -16,7 +16,7 @@ public class Quiz {
      */
     public Quiz(){
 
-        quiz = new ArrayList<Grila>();
+        quiz = new ArrayList<>();
 
     }
 
@@ -29,7 +29,7 @@ public class Quiz {
     }
 
     /**
-     * se creaza un quiz random de 26 de intrebari
+     * Metoda care creeaza un quiz random de 26 de intrebari
      */
     public void  createExam(){
         List<Grila> grilaCopy = new ArrayList<Grila>(quiz);
@@ -43,7 +43,6 @@ public class Quiz {
             grilaCopy.remove(randIndex);
         }
         quiz = listaGoala;
-        System.out.println(listaGoala);
     }
 
     /**
@@ -77,21 +76,6 @@ public class Quiz {
     public int getGameSize(){
         return quiz.size();
 
-    }
-
-    /**
-     * Getter - returneaza scorul
-     */
-    public int getScore(){
-        return score;
-    }
-
-    /**
-     * Setter - modifica scorul
-     * @param val - valoarea noua
-     */
-    public void setScore(int val){
-        this.score = val;
     }
 
     @Override

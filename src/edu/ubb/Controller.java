@@ -2,6 +2,8 @@ package ubb;
 
 import Model.FileRepo;
 import Model.Quiz;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,7 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
+import javafx.util.Duration;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,14 +21,18 @@ public class Controller extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     private Quiz quiz;
-    private QuestionsWindowController view;  //////////////////////////////////
-    private StartWindowController load;     ///////////////////////////////////
+    private QuestionsWindowController view;
+    private StartWindowController load;
     private int currentIndex;
     private int score=0;
     private int gresite=0;
-    private MenuController menu;
+    private Integer seconds;
 
-
+    /**
+     * metoda de start
+     * @param primaryStage - scena principala
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
@@ -35,11 +41,36 @@ public class Controller extends Application {
         showStartWindow();
     }
 
+    /**
+     * Functie pentru calcularea timpului
+     *
+     * @param primaryStage - scena pentru care sa cronometreze
+     */
+    private void doTime(Stage primaryStage) {
+        Timeline time = new Timeline();
+        KeyFrame frame = new KeyFrame(Duration.seconds(1), event -> {
+            seconds--;
+            if (seconds <= 0) {
+                try {
+                    showResult();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        time.setCycleCount(Timeline.INDEFINITE);
+        time.getKeyFrames().add(frame);
+        time.stop();
+        time.play();
+    }
 
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * Initializeaza root-ul cu o bara de meniu
+     */
     private void initRootLayout() throws IOException {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Controller.class.getResource("Menu.fxml"));
@@ -48,7 +79,6 @@ public class Controller extends Application {
             primaryStage.setScene(scene);
             MenuController viewController = loader.getController();
             viewController.setMainApp(this);
-            menu = viewController;
             primaryStage.show();
 
     }
@@ -70,7 +100,7 @@ public class Controller extends Application {
      * Metoda pt optiunea de restart
      */
     public void restartQuiz() throws IOException {
-        //quiz.startGame();
+        seconds=1800;
         showQuizView();
     }
 
@@ -78,9 +108,9 @@ public class Controller extends Application {
      * Metoda pt inceperea quizului
      */
     public void loadQuiz() throws Exception{
+        seconds=1800;
         this.quiz = new Quiz();
         FileRepo.readFile(new File("src/Model/intrebari.txt"),quiz);
-        System.out.println(quiz.getGameSize());
         quiz.createExam();
         showQuizView();
     }
@@ -89,6 +119,8 @@ public class Controller extends Application {
      * Metoda pt initializarea controllerului dupa fisierul fxml
      */
     private void showQuizView() throws IOException {
+        new Thread(() -> doTime(primaryStage)).start();
+        doTime(primaryStage);
         gresite = 0;
         currentIndex = 0;
         if (quiz.getGameSize() > 0) {
@@ -114,9 +146,6 @@ public class Controller extends Application {
         else {
             if (index <= quiz.getGameSize()) {
                 view.setLabels(currentIndex + 1, gresite);
-                System.out.println("Raspunse corect: " + score);
-                System.out.println("Raspunse gresit: " + gresite);
-                System.out.println("ce marime are quiz-ul: " + quiz.getGameSize());
                 view.showQuiz(quiz.getQuestion(index), quiz.getAllAnswers(index));
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -132,14 +161,11 @@ public class Controller extends Application {
      */
     public void stepQuiz(ArrayList<String> pick) throws IOException {
         view.setLabels(currentIndex,gresite);
-        if (pick.equals(quiz.getCorrect(currentIndex))){
+        if (pick.equals(quiz.getCorrect(currentIndex)))
             score +=1;
-            }
-        else{
+        else
             gresite += 1;
-        }
         currentIndex = currentIndex + 1;
-        System.out.println("indexul curent: " + currentIndex);
         if(gresite >4)
             showResult();
         else
@@ -155,6 +181,9 @@ public class Controller extends Application {
         load.showResult(score);
     }
 
+    /**
+     * Metoda pentru inchiderea programului
+     */
     public void close() {
         primaryStage.close();
     }
